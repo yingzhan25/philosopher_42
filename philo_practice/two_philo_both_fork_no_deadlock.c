@@ -1,3 +1,12 @@
+// Based on Task 4, solve the deadlock using two methods:
+/*
+Method A: Odd-Even Strategy
+- Philosopher1 (Odd): Take Fork1 first, then Fork2.
+- Philosopher2 (Even): Take Fork2 first, then Fork1.
+
+Method B: Resource Ordering
+- Rule: Must always pick up the lower-numbered fork first.
+*/
 #include <sys/time.h>
 #include <stdlib.h>
 #include <stdio.h>

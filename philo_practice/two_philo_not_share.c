@@ -1,3 +1,7 @@
+// Create two threads, each representing one philosopher.
+// Philosopher 1: Think 1s → Eat 2s → Sleep 1s → Loop.
+// Philosopher 2: Think 2s → Eat 1s → Sleep 2s → Loop.
+
 #include <sys/time.h>
 #include <stdlib.h>
 #include <stdio.h>
