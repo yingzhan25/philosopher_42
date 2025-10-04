@@ -45,4 +45,5 @@ int	main(void)
 			usleep(500);
 		i++;
 	}
+	return (0);
 }
