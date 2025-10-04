@@ -1,3 +1,6 @@
+// Scenario: Only 1 fork is available, both philosophers want to use it.
+// Rule: A philosopher must acquire the fork to "eat".
+
 #include <sys/time.h>
 #include <stdlib.h>
 #include <stdio.h>

@@ -1,3 +1,6 @@
+// Write a program that simulates the life of one philosopher:
+// Think 2s → Pick up fork → Eat 3s → Put down fork → Sleep 2s → Loop
+
 #include <sys/time.h>
 #include <stdlib.h>
 #include <stdio.h>

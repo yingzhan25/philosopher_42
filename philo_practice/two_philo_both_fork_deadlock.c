@@ -1,3 +1,8 @@
+// Two philosophers, two forks (Fork1 and Fork2).
+// Erroneous implementation: Both philosophers pick up the left fork first, then the right.
+//Philosopher1: lock(Fork1) → lock(Fork2) → Eat → unlock
+//Philosopher2: lock(Fork2) → lock(Fork1) → Eat → unlock
+
 #include <sys/time.h>
 #include <stdlib.h>
 #include <stdio.h>
