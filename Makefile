@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 LFLAGS = -pthread
 RM = rm -f
 INCLUDES = -I./includes/
-SRCS = main.c
+SRCS = main.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
