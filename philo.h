@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/12 13:09:22 by yingzhan          #+#    #+#             */
+/*   Updated: 2025/10/13 17:42:52 by yingzhan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -6,38 +18,48 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <pthread.h>
-
-typedef struct s_philo
-{
-    int     id;
-    int     last_meal_time;
-    int     time_already_eat;
-    int     left_fork;
-    int     right_fork;
-    t_shared    *data;
-}	t_philo;
+# include "type.h"
 
 typedef struct s_shared
 {
-    int                 num_of_philo;
-    int                 time_to_die;
-    int                 time_to_eat;
-    int                 time_to_sleep;
-    int                 time_each_need_eat;
-    int					is_stop;
-	long				base_time;
+	int					num_of_philo;
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					time_each_need_eat;
+	int					is_stop;
+	long long			base_time;
 	pthread_mutex_t		stop;
 	pthread_mutex_t		print;
+	pthread_mutex_t		meal_count;
+	pthread_mutex_t		meal_time;
 	pthread_mutex_t		*fork;
-    t_philo             *philo;
-    pthread_t           *thread;
-}   t_shared;
+	t_philo				*philo;
+	pthread_t			*thread;
+}	t_shared;
 
-int	    ft_atoi(const char *nptr);
-long	time_stamp(long start);
-void	print_safe(t_philo *p, long stamp, int id, char *action);
-int	    read_stop(t_shared *data);
-void	write_stop(t_shared *data);
+typedef struct s_philo
+{
+	int			id;
+	long long	last_meal_time;
+	int			time_already_eat;
+	int			left_fork;
+	int			right_fork;
+	t_shared	*data;
+}	t_philo;
 
+void		*routine(void *arg);
+void		*monitor(void *arg);
+int			ft_atoi(const char *nptr);
+long long	time_stamp(long long start);
+long long	print_safe(t_philo *p, int id, char *action);
+int			read_stop(t_shared *data);
+void		write_stop(t_shared *data);
+void		write_meal_time(t_philo *philo, long long last_meal);
+long long	read_meal_time(t_philo *philo);
+void		write_meal_count(t_philo *philo);
+int			read_meal_count(t_philo *philo);
+int			is_finish(t_philo *p);
+void		clean_up(t_shared *data);
 
 #endif
