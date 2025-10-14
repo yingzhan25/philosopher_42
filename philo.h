@@ -6,12 +6,18 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 13:09:22 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/13 17:42:52 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:56:26 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
+
+# define MIN_PHILO 1
+# define MAX_PHILO 200
+# define MIN_TIME 60
+# define MAX_TIME 600000
+# define MAX_EAT 1000
 
 # include <sys/time.h>
 # include <stdlib.h>
@@ -48,6 +54,7 @@ typedef struct s_philo
 	t_shared	*data;
 }	t_philo;
 
+int			init_data(char **argv, t_shared *data);
 void		*routine(void *arg);
 void		*monitor(void *arg);
 int			ft_atoi(const char *nptr);
