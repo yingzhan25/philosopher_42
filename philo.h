@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 13:09:22 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/14 11:56:26 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:04:19 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ long long	time_stamp(long long start);
 long long	print_safe(t_philo *p, int id, char *action);
 int			read_stop(t_shared *data);
 void		write_stop(t_shared *data);
-void		write_meal_time(t_philo *philo, long long last_meal);
+void		write_meal_time(t_philo *philo);
 long long	read_meal_time(t_philo *philo);
 void		write_meal_count(t_philo *philo);
 int			read_meal_count(t_philo *philo);
