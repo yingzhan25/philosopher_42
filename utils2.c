@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 15:06:41 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/13 17:55:02 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:03:45 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	clean_up(t_shared *data)
  * Protect from philo and moninor threads read and write meal_time
  * at the same time
  */
-void	write_meal_time(t_philo *philo, long long last_meal)
+void	write_meal_time(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->meal_time);
-	philo->last_meal_time = last_meal;
+	philo->last_meal_time = time_stamp(philo->data->base_time);
 	pthread_mutex_unlock(&philo->data->meal_time);
 }
 

@@ -6,7 +6,7 @@
 #    By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/12 13:09:46 by yingzhan          #+#    #+#              #
-#    Updated: 2025/10/13 18:14:01 by yingzhan         ###   ########.fr        #
+#    Updated: 2025/10/14 11:56:34 by yingzhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 LFLAGS = -pthread
 RM = rm -f
 INCLUDES = -I./includes/
-SRCS = main.c monitor_thread.c philo_thread.c utils1.c utils2.c
+SRCS = main.c monitor_thread.c philo_thread.c utils1.c utils2.c init.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

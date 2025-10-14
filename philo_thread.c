@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:58:25 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/13 17:53:19 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/14 15:18:21 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static void	put_fork_down(t_philo *p)
 static int	eat_with_fork(t_philo *p)
 {
 	int			ret;
-	long long	last_meal;
 
 	if (read_stop(p->data))
 		return (1);
@@ -82,15 +81,15 @@ static int	eat_with_fork(t_philo *p)
 	ret = take_fork_up(p);
 	if (ret)
 		return (1);
-	last_meal = print_safe(p, p->id, "is eating");
-	write_meal_time(p, last_meal);
+	write_meal_time(p);
+	print_safe(p, p->id, "is eating");
 	write_meal_count(p);
 	while (time_stamp(p->data->base_time) < p->last_meal_time + \
 		p->data->time_to_eat)
 	{
 		if (read_stop(p->data))
 			return (put_fork_down(p), 1);
-		usleep(500);
+		usleep(100);
 	}
 	put_fork_down(p);
 	return (0);
@@ -108,6 +107,8 @@ void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	while (!read_stop(philo->data))
 	{
+		if (philo->id % 2 == 0)
+			usleep(100);
 		if (eat_with_fork(philo))
 			break ;
 		start_sleep = print_safe(philo, philo->id, "is sleeping");
