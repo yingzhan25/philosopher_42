@@ -1,1 +1,0 @@
-# philosopher_42
