@@ -6,27 +6,13 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:55:25 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/14 11:58:51 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:10:20 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	is_number(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-static int	is_validate(char **argv, t_shared *data)
+static int	validate_before_atoi(char**argv)
 {
 	if (!argv[1] || !*argv[1] || !argv[2] || !*argv[2] || !argv[3] || \
 		!*argv[3] || !argv[4] || !*argv[4])
@@ -36,6 +22,18 @@ static int	is_validate(char **argv, t_shared *data)
 		return (printf("Args should be positive integer\n"), 1);
 	if ((argv[5] && *argv[5]) && is_number(argv[5]))
 		return (printf("Args should be positive integer\n"), 1);
+	if (is_len(argv[1]) || is_len(argv[2]) || is_len(argv[3]) \
+		|| is_len(argv[4]))
+		return (printf("Args have too many digits\n"), 1);
+	if ((argv[5] && *argv[5]) && is_len(argv[5]))
+		return (printf("Args have too many digits\n"), 1);
+	return (0);
+}
+
+static int	is_validate(char **argv, t_shared *data)
+{
+	if (validate_before_atoi(argv))
+		return (1);
 	data->num_of_philo = ft_atoi(argv[1]);
 	if (data->num_of_philo < MIN_PHILO || data->num_of_philo > MAX_PHILO)
 		return (printf("Number of philo is 1-200\n"), 1);

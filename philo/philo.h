@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 13:09:22 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/14 15:04:19 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:11:42 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ long long	read_meal_time(t_philo *philo);
 void		write_meal_count(t_philo *philo);
 int			read_meal_count(t_philo *philo);
 int			is_finish(t_philo *p);
+int			is_number(char *str);
+int			is_len(char *str);
 void		clean_up(t_shared *data);
 
 #endif

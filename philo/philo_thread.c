@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:58:25 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/14 15:18:21 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:13:19 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ static int	eat_with_fork(t_philo *p)
 
 /**
  * Return whenever read_stop is true;
- * Sleep in time fragrants to detect death asap
+ * Sleep in time fragrants to detect death asap;
+ * Extend time for usllep when odd number of philo to avoid death;
  */
 void	*routine(void *arg)
 {
@@ -108,7 +109,7 @@ void	*routine(void *arg)
 	while (!read_stop(philo->data))
 	{
 		if (philo->id % 2 == 0)
-			usleep(100);
+			usleep(1000);
 		if (eat_with_fork(philo))
 			break ;
 		start_sleep = print_safe(philo, philo->id, "is sleeping");
@@ -119,7 +120,7 @@ void	*routine(void *arg)
 		{
 			if (read_stop(philo->data))
 				return (NULL);
-			usleep(500);
+			usleep(100);
 		}
 		print_safe(philo, philo->id, "is thinking");
 	}

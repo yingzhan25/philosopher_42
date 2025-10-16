@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 13:09:08 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/14 11:55:55 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/16 11:47:06 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char *argv[])
 
 	if (argc < 5 || argc > 6 || init_data(argv, &data))
 	{
-		printf("PLEASE INPUT: 1.number_of_philosophers 2.time_to_die ");
+		printf("Invalid INPUT: 1.number_of_philosophers 2.time_to_die ");
 		printf("3.time_to_eat 4.time_to_sleep ");
 		printf("5.[number_of_times_each_philosopher_must_eat]\n");
 		return (1);
