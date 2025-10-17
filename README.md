@@ -1,22 +1,37 @@
 # Philosopher_42
 
 A C implementation of the Dining Philosophers problem.  
+
 This project implements the classic concurrency/synchronization exercise commonly assigned at 42 (philosophers subject). It demonstrates safe use of threads/processes, mutexes/semaphores, and careful timing to model philosophers that think, eat and sleep without deadlocks or data races.
 
-This repository is implemented in C (primary), with Makefiles and small shell helpers. 
+---
+
+### Besides codes, also adding with some small practices and shell tester srcipts. 
+
+The pratices break down the complicated question, so that you can learn step by step, from easy to hard, without anxiety.
+
+- single_philo
+- two_philo_not_share
+- two_philo_share_one_fork
+- two_philo_both_fork_deadlock
+- two_philo_both_fork_no_deadlock  
+
+The tester script are convenient for testing multiple times (e.g.100 times) when the death of philosophers is unpredictable.
 
 (Also, 42PhilosophersHelper provides some good test scripts. 
 https://github.com/AbdallahZerfaoui/42PhilosophersHelper.git). 
 
-It aims to be simple, robust, and easy to test.
-
 # To be noticed:
 
-This version is changed after evaluation:
+This older version(8564e531ab11083bd7e1a9cb8e70e5bdce90afed) passed all the required tests during evaluation.
+
+<img width="831" height="368" alt="image" src="https://github.com/user-attachments/assets/03c4ac95-378c-46d3-95c4-9e30052fad94" />
+
+But aiming to improve, the latest version is changed after evaluation:
 - add error handling for system functions;
 - use ft_putstr_fd to print error msg to stderr;
 - adjust files;
-- not handle norminette
+- however, not handle norminette...
 
 ---
 
