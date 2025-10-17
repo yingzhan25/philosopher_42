@@ -23,6 +23,8 @@ The tester scripts are convenient for testing multiple times (e.g.100 times) whe
 (Also, 42PhilosophersHelper provides some good test scripts. 
 https://github.com/AbdallahZerfaoui/42PhilosophersHelper.git). 
 
+---
+
 # To be noticed:
 
 This older version(8564e531ab11083bd7e1a9cb8e70e5bdce90afed) passed all the required tests with valgrind --tool=helgrind --tool=drd during evaluation.
@@ -46,6 +48,12 @@ There are commonly two variants:
 - Process-based solution using processes and named semaphores (often referred to as the "bonus" variant).
 
 This repo provides only first part (see the Makefile for available targets).
+
+---
+
+## Arguments
+
+"./philo 1.number_of_philosophers 2.time_to_die 3.time_to_eat 4.time_to_sleep 5. [number_of_times_each_philosopher_must_eat]"
 
 ---
 
