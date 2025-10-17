@@ -23,7 +23,7 @@ https://github.com/AbdallahZerfaoui/42PhilosophersHelper.git).
 
 # To be noticed:
 
-This older version(8564e531ab11083bd7e1a9cb8e70e5bdce90afed) passed all the required tests during evaluation.
+This older version(8564e531ab11083bd7e1a9cb8e70e5bdce90afed) passed all the required tests with valgrind --tool=helgrind --tool=drd during evaluation.
 
 <img width="831" height="368" alt="image" src="https://github.com/user-attachments/assets/03c4ac95-378c-46d3-95c4-9e30052fad94" />
 
