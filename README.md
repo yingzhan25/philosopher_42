@@ -5,7 +5,7 @@ This project implements the classic concurrency/synchronization exercise commonl
 
 This repository is implemented in C (primary), with Makefiles and small shell helpers. 
 
-(Also, 42PhilosophersHelper provides some good test scrips. 
+(Also, 42PhilosophersHelper provides some good test scripts. 
 https://github.com/AbdallahZerfaoui/42PhilosophersHelper.git). 
 
 It aims to be simple, robust, and easy to test.
