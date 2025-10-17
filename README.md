@@ -6,7 +6,7 @@ This project implements the classic concurrency/synchronization exercise commonl
 
 ---
 
-### Besides codes, also adding with some small practices and shell tester srcipts. 
+### Besides codes, also adding with some small practices and shell tester scripts. 
 
 The pratices break down the complicated question, so that you can learn step by step, from easy to hard, without anxiety.
 
@@ -16,7 +16,7 @@ The pratices break down the complicated question, so that you can learn step by 
 - two_philo_both_fork_deadlock
 - two_philo_both_fork_no_deadlock  
 
-The tester script are convenient for testing multiple times (e.g.100 times) when the death of philosophers is unpredictable.
+The tester scripts are convenient for testing multiple times (e.g.100 times) when the death of philosophers is unpredictable.
 
 (Also, 42PhilosophersHelper provides some good test scripts. 
 https://github.com/AbdallahZerfaoui/42PhilosophersHelper.git). 
