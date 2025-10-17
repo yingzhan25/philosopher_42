@@ -2,7 +2,9 @@
 
 A C implementation of the Dining Philosophers problem.  
 
-This project implements the classic concurrency/synchronization exercise commonly assigned at 42 (philosophers subject). It demonstrates safe use of threads/processes, mutexes/semaphores, and careful timing to model philosophers that think, eat and sleep without deadlocks or data races.
+This project implements the classic concurrency/synchronization exercise commonly assigned at 42 (philosophers subject). It demonstrates safe use of threads, mutexes, and careful timing to model philosophers that think, eat and sleep without deadlocks or data races.
+
+<img width="251" height="604" alt="image" src="https://github.com/user-attachments/assets/e8d13e84-46e9-4092-a48f-b8f9e3f69729" />
 
 ---
 
@@ -64,7 +66,3 @@ This repo provides only first part (see the Makefile for available targets).
 - make
 - pthreads (for thread-based solution)
 - Optional: valgrind for memory checking
-
----
-
-
