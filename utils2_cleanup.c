@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 15:06:41 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/17 12:54:35 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/17 13:10:56 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,44 +31,26 @@ int	clean_up(t_shared *data)
 	return (0);
 }
 
-/**
- * Protect from philo and moninor threads read and write meal_time
- * at the same time
- */
-void	write_meal_time(t_philo *philo)
+int	destroy_single_mutex(pthread_mutex_t *mutex)
 {
-	pthread_mutex_lock(&philo->data->meal_time);
-	philo->last_meal_time = time_stamp(philo->data->base_time);
-	pthread_mutex_unlock(&philo->data->meal_time);
+	if (pthread_mutex_destroy(mutex))
+		return (ft_putstr_fd("Failed mutex destroy\n", STDERR_FILENO), 1);
+	return (0);
 }
 
-long long	read_meal_time(t_philo *philo)
+int	destroy_fork_mutex(t_shared *data, int i)
 {
-	long long	value;
+	int	j;
 
-	pthread_mutex_lock(&philo->data->meal_time);
-	value = philo->last_meal_time;
-	pthread_mutex_unlock(&philo->data->meal_time);
-	return (value);
-}
-
-/**
- * Protect from philo and moninor threads read and write meal_count
- * at the same time
- */
-void	write_meal_count(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->data->meal_count);
-	philo->time_already_eat++;
-	pthread_mutex_unlock(&philo->data->meal_count);
-}
-
-int	read_meal_count(t_philo *philo)
-{
-	int	value;
-
-	pthread_mutex_lock(&philo->data->meal_count);
-	value = philo->time_already_eat;
-	pthread_mutex_unlock(&philo->data->meal_count);
-	return (value);
+	j = 0;
+	while (j < i)
+	{
+		if (destroy_single_mutex(&data->fork[i]))
+			return (1);
+		j++;
+	}
+	free(data->thread);
+	free(data->fork);
+	free(data->philo);
+	return (0);
 }
