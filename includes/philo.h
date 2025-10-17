@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 13:09:22 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/16 13:11:42 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/17 12:54:50 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define MIN_TIME 60
 # define MAX_TIME 600000
 # define MAX_EAT 1000
+# define MAX_DIGIT 6
 
 # include <sys/time.h>
 # include <stdlib.h>
@@ -69,6 +70,9 @@ int			read_meal_count(t_philo *philo);
 int			is_finish(t_philo *p);
 int			is_number(char *str);
 int			is_len(char *str);
-void		clean_up(t_shared *data);
+int			clean_up(t_shared *data);
+int			destroy_single_mutex(pthread_mutex_t *mutex);
+int			destroy_fork_mutex(t_shared *data, int i);
+void		ft_putstr_fd(char *s, int fd);
 
 #endif

@@ -6,29 +6,29 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 15:06:41 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/14 15:03:45 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/17 12:54:35 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	clean_up(t_shared *data)
+int	clean_up(t_shared *data)
 {
 	int	i;
 
 	i = 0;
 	while (i < data->num_of_philo)
 	{
-		pthread_mutex_destroy(&data->fork[i]);
+		if (destroy_single_mutex(&data->fork[i]))
+			return (1);
 		i++;
 	}
-	pthread_mutex_destroy(&data->stop);
-	pthread_mutex_destroy(&data->print);
-	pthread_mutex_destroy(&data->meal_count);
-	pthread_mutex_destroy(&data->meal_time);
+	if (destroy_single_mutex(&data->stop) || destroy_single_mutex(&data->print) || destroy_single_mutex(&data->meal_count) || destroy_single_mutex(&data->meal_time))
+		return (1);
 	free(data->thread);
 	free(data->fork);
 	free(data->philo);
+	return (0);
 }
 
 /**
