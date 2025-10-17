@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 13:10:41 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/10/17 12:43:57 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/10/17 13:11:05 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,7 @@ int	is_len(char *str)
 	return (0);
 }
 
-int	destroy_single_mutex(pthread_mutex_t *mutex)
-{
-	if (pthread_mutex_destroy(mutex))
-		return (ft_putstr_fd("Failed mutex destroy\n", STDERR_FILENO), 1);
-	return (0);
-}
 
-int	destroy_fork_mutex(t_shared *data, int i)
-{
-	int	j;
-
-	j = 0;
-	while (j < i)
-	{
-		if (destroy_single_mutex(&data->fork[i]))
-			return (1);
-		j++;
-	}
-	free(data->thread);
-	free(data->fork);
-	free(data->philo);
-	return (0);
-}
 
 void	ft_putstr_fd(char *s, int fd)
 {
@@ -74,4 +52,44 @@ void	ft_putstr_fd(char *s, int fd)
 	while (s[len])
 		len++;
 	write(fd, s, len);
+}
+
+
+int	ft_atoi(const char *nptr)
+{
+	int	nb;
+	int	i;
+	int	sign;
+
+	nb = 0;
+	i = 0;
+	sign = 1;
+	while (nptr[i] == ' ' || (nptr[i] >= '\t' && nptr[i] <= '\r'))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			sign = -sign;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		nb = nb * 10 + (nptr[i] - 48);
+		i++;
+	}
+	return (sign * nb);
+}
+
+/**
+ * Return relative time based on the start time of the program
+ */
+long long	time_stamp(long long start)
+{
+	struct timeval	current;
+	long long		stamp;
+
+	if (gettimeofday(&current, NULL))
+		return (perror("gettimeofday"), -1);
+	stamp = current.tv_sec * 1000 + current.tv_usec / 1000 - start;
+	return (stamp);
 }
